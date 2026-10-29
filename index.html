@@ -52,11 +52,12 @@ footer{background:var(--p);border-top:1px solid var(--b);margin-top:36px;padding
 </form>
 <div id="dash" style="display:none">
 <div class="idx">
-<div class="ic"><div class="n">Aktive Nutzer · 30 Tage</div><div class="p" id="kUsers">-</div><span class="c nt" id="kUsersT"></span></div>
-<div class="ic"><div class="n">Sitzungen · 30 Tage</div><div class="p" id="kSessions">-</div><span class="c nt" id="kSessionsT"></span></div>
-<div class="ic"><div class="n">Seitenaufrufe · 30 Tage</div><div class="p" id="kViews">-</div><span class="c nt" id="kViewsT"></span></div>
+<div class="ic"><div class="n" id="nUsers">Aktive Nutzer · 30 Tage</div><div class="p" id="kUsers">-</div><span class="c nt" id="kUsersT"></span></div>
+<div class="ic"><div class="n" id="nSessions">Sitzungen · 30 Tage</div><div class="p" id="kSessions">-</div><span class="c nt" id="kSessionsT"></span></div>
+<div class="ic"><div class="n" id="nViews">Seitenaufrufe · 30 Tage</div><div class="p" id="kViews">-</div><span class="c nt" id="kViewsT"></span></div>
 <div class="ic"><div class="n">Seiten pro Sitzung</div><div class="p" id="kPPS">-</div><span class="c nt" id="kPPST"></span></div>
 </div>
+<p class="mut" id="coverage" style="margin:-6px 2px 16px;font-size:12.5px"></p>
 <section class="pn"><h2>Nutzer pro Tag <span id="stand"></span></h2><svg id="chart" viewBox="0 0 800 260" role="img" aria-label="Nutzer pro Tag"></svg></section>
 <div class="g2">
 <section class="pn"><h2>Top-Seiten <span>nach Aufrufen</span></h2><table id="pages"></table></section>
@@ -105,11 +106,23 @@ function chip(id,t){
 }
 function render(d){
   const ds=d.daily.map(r=>({date:r.d[0],users:r.m[0],sessions:r.m[1],views:r.m[2]}));
-  const su=ds.reduce((a,b)=>a+b.users,0),ss=ds.reduce((a,b)=>a+b.sessions,0),sv=ds.reduce((a,b)=>a+b.views,0);
+  const t=d.totals;
+  let su,ss,sv;
+  if(t&&t.length===3){
+    su=t[0];ss=t[1];sv=t[2];
+  }else{
+    su=ds.reduce((a,b)=>a+b.users,0);ss=ds.reduce((a,b)=>a+b.sessions,0);sv=ds.reduce((a,b)=>a+b.views,0);
+    $("nUsers").textContent="Aktive Nutzertage · 30 Tage";
+    $("nUsers").title="Summe der täglich aktiven Nutzer; dieselbe Person kann an mehreren Tagen zählen.";
+  }
   $("kUsers").textContent=fmt(su);
   $("kSessions").textContent=fmt(ss);
   $("kViews").textContent=fmt(sv);
   $("kPPS").textContent=ss?(sv/ss).toFixed(1).replace(".",","):"-";
+  if(ds.length){
+    const fd=s=>s.slice(6,8)+"."+s.slice(4,6)+"."+s.slice(0,4);
+    $("coverage").textContent="Messung mit Daten seit "+fd(ds[0].date)+" ("+ds.length+(ds.length===1?" Tag":" Tage")+" mit Besuchen im 30-Tage-Zeitraum). Tage ohne Besuch sind nicht gelistet.";
+  }
   chip("kUsersT",trend(ds,"users"));
   chip("kSessionsT",trend(ds,"sessions"));
   chip("kViewsT",trend(ds,"views"));

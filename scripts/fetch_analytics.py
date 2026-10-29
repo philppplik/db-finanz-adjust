@@ -36,12 +36,19 @@ sources = client.run_report(RunReportRequest(
     limit=10,
 ))
 
+totals = client.run_report(RunReportRequest(
+    property=prop,
+    date_ranges=[DateRange(start_date="30daysAgo", end_date="today")],
+    metrics=[Metric(name="activeUsers"), Metric(name="sessions"), Metric(name="screenPageViews")],
+))
+
 def rows(rep):
     return [{"d": [v.value for v in r.dimension_values], "m": [float(v.value) for v in r.metric_values]} for r in rep.rows]
 
 data = {
     "generated": datetime.datetime.now(datetime.timezone.utc).isoformat(),
     "range": "30daysAgo..today",
+    "totals": [float(v.value) for v in totals.rows[0].metric_values] if totals.rows else None,
     "daily": rows(daily),
     "pages": rows(pages),
     "sources": rows(sources),
