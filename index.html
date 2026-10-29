@@ -1,58 +1,70 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" data-theme="light">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Dashboard - Finanz Adjust</title>
+<title>Analytics | finanz adjust</title>
+<meta name="description" content="Privates Analytics-Dashboard von finanz adjust.">
+<meta name="theme-color" content="#eff1f5">
+<meta name="color-scheme" content="light dark">
+<script>try{var t=localStorage.getItem("fa-theme");document.documentElement.dataset.theme=t==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
 <style>
-:root{color-scheme:dark}
-body{margin:0;font:16px/1.5 system-ui,-apple-system,sans-serif;background:#0d1526;color:#e8ecf4}
-main{max-width:1100px;margin:0 auto;padding:48px 24px}
-h1{font-size:22px;font-weight:600;margin:0 0 8px}
-.sub{color:#aab4c8;margin:0 0 32px;font-size:14px}
-#gate{max-width:380px;margin:15vh auto 0;text-align:center}
-#gate input{width:100%;box-sizing:border-box;padding:12px 14px;border-radius:8px;border:1px solid #2a3752;background:#111c33;color:#e8ecf4;font-size:16px;margin-bottom:12px}
-#gate button{width:100%;background:#c9a84c;color:#0d1526;font-weight:600;padding:12px;border:0;border-radius:8px;font-size:16px;cursor:pointer}
-#gate button:hover{filter:brightness(1.1)}
-#err{color:#e0746a;font-size:14px;min-height:20px;margin-top:8px}
-#dash{display:none}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px}
-.card{background:#111c33;border-radius:12px;padding:20px}
-.card .v{font-size:28px;font-weight:700;color:#c9a84c}
-.card .l{color:#aab4c8;font-size:13px;margin-top:4px}
-section{background:#111c33;border-radius:12px;padding:20px;margin-bottom:24px}
-h2{font-size:15px;font-weight:600;margin:0 0 16px;color:#c9d4ea}
-table{width:100%;border-collapse:collapse;font-size:14px}
-td,th{text-align:left;padding:6px 8px;border-bottom:1px solid #1d2a45;color:#c9d4ea}
-td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums}
-svg{width:100%;height:auto;display:block}
-footer{padding:16px;text-align:center;color:#5c6678;font-size:13px}
+:root{--bg:#eff1f5;--p:#fff;--p2:#f3f5f8;--b:#e2e5ec;--fg:#333a45;--mut:#67707d;--up:#14743c;--dn:#c62828;--ac:#1c66cb;--hd:#0f1722;--upbg:rgba(20,116,60,.1);--dnbg:rgba(198,40,40,.09);--acbg:rgba(28,102,203,.07);--ring:rgba(28,102,203,.35);--sh:0 1px 2px rgba(15,23,34,.05),0 10px 28px -14px rgba(15,23,34,.14);--sh-lg:0 2px 6px rgba(15,23,34,.07),0 20px 44px -16px rgba(15,23,34,.22);--pA:rgba(255,255,255,.85);color-scheme:light}
+html[data-theme=dark]{--bg:#0f141f;--p:#181e2b;--p2:#202738;--b:#2a3243;--fg:#d4d9e2;--mut:#8b93a4;--up:#2fbb92;--dn:#f27070;--ac:#66b3ff;--hd:#f2f5fa;--upbg:rgba(47,187,146,.16);--dnbg:rgba(242,112,112,.16);--acbg:rgba(102,179,255,.1);--ring:rgba(102,179,255,.4);--sh:0 1px 2px rgba(0,0,0,.45),0 12px 32px -16px rgba(0,0,0,.6);--sh-lg:0 2px 8px rgba(0,0,0,.5),0 24px 48px -16px rgba(0,0,0,.65);--pA:rgba(15,20,31,.82);color-scheme:dark}
+*{box-sizing:border-box}html{overflow-x:clip}body{margin:0;overflow-x:clip;font:14px/1.55 "Work Sans",-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}::selection{background:rgba(28,102,203,.2)}html[data-theme=dark] ::selection{background:rgba(102,179,255,.28)}a{color:inherit;text-decoration:none}a:hover{color:var(--hd)}
+@media(prefers-reduced-motion:no-preference){body,header,footer,.ic,.pn{transition:background-color .18s ease,border-color .18s ease}}
+header{background:var(--pA);-webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5);border-bottom:1px solid var(--b);position:sticky;top:0;z-index:9}.nav{display:flex;align-items:center;gap:22px;height:56px;padding:0 20px;max-width:1200px;margin:0 auto;position:relative}.logo{font-weight:800;font-size:18px;color:var(--hd);display:flex;align-items:center;gap:9px}.logo img{height:26px;width:auto;display:block}.logo .wm{white-space:nowrap;letter-spacing:-.01em}.logo b{color:var(--ac)}.links{display:flex;align-items:center;gap:22px;flex:1}.links a.l{color:var(--mut);font-weight:500;padding:6px 0;position:relative;transition:color .15s ease}.links a.l::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:var(--ac);transform:scaleX(0);transform-origin:left;transition:transform .18s ease}.links a.l:hover::after{transform:scaleX(1)}.links a.l:hover{color:var(--hd)}.sp{flex:1}.btn{background:linear-gradient(180deg,#2f83e8,#1c66cb);color:#fff;padding:8px 15px;border-radius:9px;font-weight:600;white-space:nowrap;box-shadow:0 1px 2px rgba(20,80,170,.35),inset 0 1px 0 rgba(255,255,255,.18);transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}.btn:hover{filter:brightness(1.07);box-shadow:0 4px 14px -4px rgba(20,80,170,.5),inset 0 1px 0 rgba(255,255,255,.18);color:#fff}.btn:active{transform:translateY(1px)}
+.mt{position:absolute;opacity:0;pointer-events:none}.bg{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;padding:8px;margin-left:auto}.bg span{display:block;height:2px;background:var(--fg);border-radius:2px;transition:.2s}
+.tt{background:none;border:1px solid var(--b);color:var(--fg);border-radius:9px;width:36px;height:36px;font-size:17px;line-height:1;cursor:pointer;display:grid;place-items:center;flex-shrink:0;transition:background .15s ease,border-color .15s ease}.tt:hover{background:var(--p2);border-color:var(--mut)}.tt-txt{display:none}.tt:focus-visible,.btn:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--ring);outline-offset:2px;border-radius:6px}
+.badge{display:inline-block;background:var(--p2);border:1px solid var(--b);color:var(--mut);font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;margin-left:8px;vertical-align:middle;letter-spacing:.01em}
+.w{max-width:1200px;margin:0 auto;padding:20px;flex:1;width:100%}
+.up{color:var(--up)}.dn{color:var(--dn)}.mut{color:var(--mut)}
+.dh{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:14px 0 4px}.dh h1{margin:0;font-size:clamp(24px,3vw,32px);font-weight:800;color:var(--hd);letter-spacing:-.025em}.dh p{width:100%;margin:2px 0 18px;color:var(--mut);font-size:13.5px}
+.idx{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}.ic{box-shadow:var(--sh);background:var(--p);border:1px solid var(--b);border-radius:14px;padding:14px 16px}.ic .n{color:var(--mut);font-size:12px;font-weight:600}.ic .p{font-size:24px;font-weight:800;letter-spacing:-.01em;color:var(--hd);margin:3px 0 5px;font-variant-numeric:tabular-nums}.ic .c{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums}.c.up{background:var(--upbg)}.c.dn{background:var(--dnbg)}.c.nt{background:var(--p2);color:var(--mut)}
+.pn{box-shadow:var(--sh);background:var(--p);border:1px solid var(--b);border-radius:14px;padding:18px;margin-bottom:16px}.pn h2{margin:0 0 12px;font-size:15.5px;font-weight:700;letter-spacing:-.01em;color:var(--hd);display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}.pn h2 span{font-size:12px;color:var(--mut);font-weight:500}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.g2>*{min-width:0}
+table{width:100%;border-collapse:collapse}th{text-align:right;color:var(--mut);font-weight:600;font-size:11.5px;letter-spacing:.01em;padding:8px 10px;border-bottom:1px solid var(--b)}th:first-child,td:first-child{text-align:left}td{text-align:right;padding:10px;border-bottom:1px solid var(--p2);font-variant-numeric:tabular-nums}tr:last-child td{border-bottom:0}tr:hover td{background:var(--p2)}td .nm{color:var(--hd);font-weight:500;overflow-wrap:anywhere}.bar{height:4px;background:var(--p2);border-radius:2px;margin-top:5px;max-width:220px}.bar i{display:block;height:100%;background:var(--ac);border-radius:2px;min-width:2px}
+#chart{width:100%;height:auto;display:block}
+#gate{max-width:400px;margin:8vh auto 10vh}.gcard{box-shadow:var(--sh-lg);background:var(--p);border:1px solid var(--b);border-radius:16px;padding:26px 24px}.gcard h2{margin:0 0 4px;font-size:18px;font-weight:800;color:var(--hd);letter-spacing:-.01em}.gcard p{margin:0 0 16px;color:var(--mut);font-size:13px}.gcard label{display:block;color:var(--mut);font-size:12.5px;font-weight:600;margin-bottom:6px}.gcard input{width:100%;box-sizing:border-box;padding:11px 13px;border-radius:9px;border:1px solid var(--b);background:var(--bg);color:var(--fg);font-size:15px;margin-bottom:14px;transition:border-color .15s ease,box-shadow .15s ease}.gcard input:focus-visible{outline:0;border-color:var(--ac);box-shadow:0 0 0 3px var(--ring)}.gcard button{width:100%}#err{color:var(--dn);font-size:13px;min-height:18px;margin-top:10px;text-align:center}
+.lock{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--acbg);color:var(--ac);margin-bottom:14px}
+#wait{display:none;color:var(--mut)}
+footer{background:var(--p);border-top:1px solid var(--b);margin-top:36px;padding:44px 20px 28px;color:var(--mut);font-size:13px}footer .c{max-width:1200px;margin:0 auto}footer .ft{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(3,minmax(120px,1fr));gap:32px 40px;padding-bottom:28px;border-bottom:1px solid var(--b);margin-bottom:20px}footer .fb p{margin:12px 0 0;max-width:340px;color:var(--mut);font-size:13px;line-height:1.6}footer a.fl{display:inline-flex;align-items:center;gap:10px;margin:0;color:var(--hd);font-weight:700;font-size:18px;letter-spacing:-.01em}footer a.fl img{display:block;height:34px;width:auto}footer a.fl .wm b{color:var(--ac);font-weight:700}footer .fc{display:flex;flex-direction:column;gap:9px}footer .fc h3{margin:0 0 4px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}footer .fc a{margin:0;width:fit-content;font-weight:500;color:var(--fg);transition:color .15s ease}footer .fc a:hover{color:var(--ac)}footer .warn{font-size:12px;color:var(--mut);margin-top:10px;max-width:900px}footer .warn a{color:var(--mut);text-decoration:underline}
+@media(max-width:900px){.idx{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.ic .p{font-size:19px}.g2{grid-template-columns:1fr}.links{display:flex;position:fixed;top:0;right:0;height:100vh;height:100dvh;width:min(320px,86vw);background:var(--p);border-left:1px solid var(--b);box-shadow:var(--sh-lg);flex-direction:column;align-items:stretch;gap:0;padding:72px 22px 24px;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;visibility:hidden;transform:translateX(105%);transition:transform .25s ease,visibility 0s linear .25s;z-index:8}.links a.l{font-size:16px;padding:13px 0;width:100%}.links a.btn{width:100%;text-align:center;padding:12px 15px;margin:10px 0 4px}.links a.l::after{display:none}.mt:checked~.links{transform:none;visibility:visible;transition:transform .25s ease}header:has(.mt:checked){position:fixed;top:0;left:0;right:0;-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--p)}.bg{position:relative;z-index:10}.mt:focus-visible~.bg{outline:3px solid var(--ring);outline-offset:2px;border-radius:9px}.mt:checked~.bg span:nth-child(1){transform:translateY(7px) rotate(45deg)}.mt:checked~.bg span:nth-child(2){opacity:0}.mt:checked~.bg span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.ovl{display:none}.mt:checked~.ovl{display:block;position:fixed;top:0;left:0;right:0;height:100vh;height:100dvh;background:rgba(10,14,22,.45);z-index:7}.links .tt{display:flex;align-items:center;gap:12px;width:100%;height:auto;padding:13px 0;background:none;border:0;border-radius:0;font-size:16px;font-weight:500;color:var(--mut)}.links .tt:hover{background:none;color:var(--hd)}.links .tt .tt-txt{display:inline}.links .tt .tt-ic{font-size:18px}.bg{display:flex}.nav{gap:14px}.hide{display:none}footer .ft{grid-template-columns:1fr 1fr;gap:24px}footer .fc:last-child{grid-column:1/-1}}
 </style>
 </head>
 <body>
-<main>
-<h1>Finanz Adjust - Analytics</h1>
-<p class="sub">Privates Dashboard. Letzte 30 Tage, aktualisiert alle 6 Stunden.</p>
-<p id="wait" style="display:none;color:#aab4c8">Das Dashboard wird gerade auf eine verschlüsselte Verbindung (HTTPS) umgestellt. Bitte später erneut über https:// aufrufen.</p>
+<header><div class="nav"><a class="logo" href="https://finanz-adjust.de/"><img src="/logo.svg" alt="finanz adjust Logo"><span class="wm">finanz<b>adjust</b></span><span class="badge">Analytics</span></a><input type="checkbox" id="mt" class="mt" aria-label="Menü umschalten"><label for="mt" class="bg" title="Menü"><span></span><span></span><span></span></label><label for="mt" class="ovl" aria-hidden="true"></label><nav class="links"><a class="l" href="https://finanz-adjust.de/aktien/">Aktien</a><a class="l" href="https://finanz-adjust.de/maerkte/">Märkte</a><a class="l" href="https://finanz-adjust.de/broker/">Broker</a><a class="l" href="https://finanz-adjust.de/artikel/">Artikel</a><a class="l" href="https://finanz-adjust.de/nachrichten/">Nachrichten</a><a class="l" href="https://finanz-adjust.de/glossar/">Glossar</a><a class="l" href="https://finanz-adjust.de/lernpfade/">Lernpfade</a><a class="l" href="https://finanz-adjust.de/rechner/">Rechner</a><a class="l" href="https://finanz-adjust.de/berichte/">Berichte</a><span class="sp"></span><a class="btn" href="https://finanz-adjust.de/">Zur Website</a><button type="button" class="tt" id="tt" aria-label="Zwischen hellem und dunklem Design wechseln" title="Design wechseln"><span class="tt-ic">☾</span><span class="tt-txt">Design wechseln</span></button></nav></div></header>
+<main class="w">
+<div class="dh"><h1>Analytics</h1><span class="badge">Privat</span><p>Dein Zugriff auf die Statistik von finanz-adjust.de. Letzte 30 Tage, aktualisiert alle 6 Stunden. Entschlüsselung lokal in deinem Browser.</p></div>
+<p id="wait">Das Dashboard ist nur über eine verschlüsselte Verbindung (HTTPS) erreichbar. Bitte über https://db.finanz-adjust.de/ aufrufen.</p>
 <form id="gate" autocomplete="on">
-<label for="pw" style="display:block;text-align:left;color:#aab4c8;font-size:14px;margin-bottom:6px">Passwort</label>
+<div class="gcard">
+<div class="lock"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+<h2>Dashboard entsperren</h2>
+<p>Die Statistik liegt verschlüsselt auf dem Server und wird erst hier im Browser lesbar.</p>
+<label for="pw">Passwort</label>
 <input id="pw" name="password" type="password" autocomplete="current-password" required>
-<button type="submit">Dashboard öffnen</button>
+<button type="submit" class="btn">Dashboard öffnen</button>
 <div id="err"></div>
-</form>
-<div id="dash">
-<div class="cards">
-<div class="card"><div class="v" id="kUsers">-</div><div class="l">Aktive Nutzer (30 Tage)</div></div>
-<div class="card"><div class="v" id="kSessions">-</div><div class="l">Sitzungen (30 Tage)</div></div>
-<div class="card"><div class="v" id="kViews">-</div><div class="l">Seitenaufrufe (30 Tage)</div></div>
 </div>
-<section><h2>Nutzer pro Tag</h2><svg id="chart" viewBox="0 0 800 220" role="img" aria-label="Nutzer pro Tag"></svg></section>
-<section><h2>Top-Seiten</h2><table id="pages"></table></section>
-<section><h2>Top-Quellen</h2><table id="sources"></table></section>
+</form>
+<div id="dash" style="display:none">
+<div class="idx">
+<div class="ic"><div class="n">Aktive Nutzer · 30 Tage</div><div class="p" id="kUsers">-</div><span class="c nt" id="kUsersT"></span></div>
+<div class="ic"><div class="n">Sitzungen · 30 Tage</div><div class="p" id="kSessions">-</div><span class="c nt" id="kSessionsT"></span></div>
+<div class="ic"><div class="n">Seitenaufrufe · 30 Tage</div><div class="p" id="kViews">-</div><span class="c nt" id="kViewsT"></span></div>
+<div class="ic"><div class="n">Seiten pro Sitzung</div><div class="p" id="kPPS">-</div><span class="c nt" id="kPPST"></span></div>
+</div>
+<section class="pn"><h2>Nutzer pro Tag <span id="stand"></span></h2><svg id="chart" viewBox="0 0 800 260" role="img" aria-label="Nutzer pro Tag"></svg></section>
+<div class="g2">
+<section class="pn"><h2>Top-Seiten <span>nach Aufrufen</span></h2><table id="pages"></table></section>
+<section class="pn"><h2>Top-Quellen <span>nach Sitzungen</span></h2><table id="sources"></table></section>
+</div>
 </div>
 </main>
-<footer>Daten nur verschlüsselt gespeichert; Entschlüsselung lokal im Browser. Es werden keine Cookies gesetzt und nichts gemessen.</footer>
+<footer><div class="c"><div class="ft"><div class="fb"><a class="fl" href="https://finanz-adjust.de/" aria-label="finanz adjust Startseite"><img src="/logo.svg" alt="" width="28" height="37"><span class="wm">finanz<b>adjust</b></span></a><p>Märkte, Kurse und Finanznachrichten. Erstellt mit KI-Unterstützung, ohne Anlageberatung.</p></div><nav class="fc" aria-label="Redaktion"><h3>Redaktion</h3><a href="https://finanz-adjust.de/redaktion/">Redaktion</a><a href="https://finanz-adjust.de/transparenz/">KI-Transparenz</a><a href="https://finanz-adjust.de/ueber-uns/">Über uns</a><a href="https://finanz-adjust.de/korrekturen/">Korrekturen</a><a href="https://finanz-adjust.de/newsletter/">Wochenbriefing</a></nav><nav class="fc" aria-label="Rechtliches"><h3>Rechtliches</h3><a href="https://finanz-adjust.de/impressum/">Impressum</a><a href="https://finanz-adjust.de/datenschutz/">Datenschutz</a><a href="https://finanz-adjust.de/risikohinweis/">Risikohinweis</a></nav><nav class="fc" aria-label="Daten und Kontakt"><h3>Daten &amp; Werkzeuge</h3><a href="https://finanz-adjust.de/rechner/">Finanzrechner</a><a href="https://finanz-adjust.de/lernpfade/">Lernpfade</a><a href="https://finanz-adjust.de/vergleiche/">Vergleiche</a><a href="https://finanz-adjust.de/broker/">Broker</a><a href="https://finanz-adjust.de/quellen/">Quellen</a><a href="https://finanz-adjust.de/kontakt/">Kontakt</a></nav></div><p class="warn">Privates Analytics-Dashboard. Die Statistikdaten liegen nur verschlüsselt auf dem Server und werden lokal in deinem Browser entschlüsselt. Diese Seite setzt keine Cookies und misst nichts. Gemessen wird nur auf <a href="https://finanz-adjust.de/">finanz-adjust.de</a> nach Einwilligung der Besucher, Details in der <a href="https://finanz-adjust.de/datenschutz/">Datenschutzerklärung</a>.</p><p class="warn">© 2026 finanz adjust · Redaktion: FA Redaktion</p></div></footer>
 <script>
 const $=id=>document.getElementById(id);
 async function derive(pw,salt){
@@ -77,19 +89,58 @@ else $("gate").addEventListener("submit",async e=>{
   }catch(_){$("err").textContent="Passwort falsch oder Daten nicht verfügbar.";}
 });
 function fmt(n){return n.toLocaleString("de-DE");}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+function trend(ds,key){
+  if(ds.length<14)return null;
+  const a=ds.slice(-7).reduce((s,x)=>s+x[key],0),b=ds.slice(-14,-7).reduce((s,x)=>s+x[key],0);
+  if(!b)return null;
+  return (a-b)/b*100;
+}
+function chip(id,t){
+  const el=$(id);
+  if(t===null||!isFinite(t)){el.textContent="zu wenig Daten";return;}
+  const up=t>=0;
+  el.className="c "+(up?"up":"dn");
+  el.textContent=(up?"▲ ":"▼ ")+Math.abs(t).toFixed(1).replace(".",",")+" % vs. Vorwoche";
+}
 function render(d){
   const ds=d.daily.map(r=>({date:r.d[0],users:r.m[0],sessions:r.m[1],views:r.m[2]}));
-  $("kUsers").textContent=fmt(ds.reduce((a,b)=>a+b.users,0));
-  $("kSessions").textContent=fmt(ds.reduce((a,b)=>a+b.sessions,0));
-  $("kViews").textContent=fmt(ds.reduce((a,b)=>a+b.views,0));
-  const W=800,H=220,P=30,max=Math.max(1,...ds.map(x=>x.users));
-  const pts=ds.map((x,i)=>[P+i*(W-2*P)/Math.max(1,ds.length-1),H-P-(x.users/max)*(H-2*P)]);
+  const su=ds.reduce((a,b)=>a+b.users,0),ss=ds.reduce((a,b)=>a+b.sessions,0),sv=ds.reduce((a,b)=>a+b.views,0);
+  $("kUsers").textContent=fmt(su);
+  $("kSessions").textContent=fmt(ss);
+  $("kViews").textContent=fmt(sv);
+  $("kPPS").textContent=ss?(sv/ss).toFixed(1).replace(".",","):"-";
+  chip("kUsersT",trend(ds,"users"));
+  chip("kSessionsT",trend(ds,"sessions"));
+  chip("kViewsT",trend(ds,"views"));
+  $("kPPST").textContent="Ø "+(ds.length?(sv/ds.length).toFixed(0):"0")+" Aufrufe/Tag";
+  if(d.generated){try{$("stand").textContent="Stand "+new Date(d.generated).toLocaleString("de-DE",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"})+" Uhr";}catch(_){}}
+  const W=800,H=260,PL=44,PR=14,PT=14,PB=34,max=Math.max(1,...ds.map(x=>x.users));
+  const nice=v=>{const p=Math.pow(10,Math.floor(Math.log10(v)));const m=v/p;return (m>=5?5:m>=2?2:1)*p;};
+  const yMax=nice(Math.ceil(max*1.15))||1;
+  const X=i=>PL+i*(W-PL-PR)/Math.max(1,ds.length-1);
+  const Y=v=>PT+(1-v/yMax)*(H-PT-PB);
+  let g="";
+  for(let k=0;k<=4;k++){
+    const v=yMax*k/4,y=Y(v);
+    g+=`<line x1="${PL}" y1="${y}" x2="${W-PR}" y2="${y}" stroke="var(--b)" stroke-width="1"/><text x="${PL-8}" y="${y+4}" text-anchor="end" font-size="11" fill="var(--mut)">${fmt(Math.round(v))}</text>`;
+  }
+  const pts=ds.map((x,i)=>[X(i),Y(x.users)]);
   const line=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+","+p[1].toFixed(1)).join(" ");
-  $("chart").innerHTML=`<path d="${line}" fill="none" stroke="#c9a84c" stroke-width="2"/><path d="${line} L${pts[pts.length-1][0]},${H-P} L${pts[0][0]},${H-P} Z" fill="#c9a84c22"/>`;
-  const tbl=(id,rows,a,b)=>{$(id).innerHTML=`<tr><th>${a}</th><th>${b}</th></tr>`+rows.map(r=>`<tr><td>${r.d[0].replace(/</g,"&lt;")}</td><td>${fmt(r.m[0])}</td></tr>`).join("");};
+  const area=`${line} L${pts[pts.length-1][0]},${Y(0)} L${pts[0][0]},${Y(0)} Z`;
+  const dl=i=>{const s=ds[i].date;return `${s.slice(6,8)}.${s.slice(4,6)}.`;};
+  const xl=[0,Math.floor((ds.length-1)/2),ds.length-1].map(i=>`<text x="${X(i)}" y="${H-10}" text-anchor="middle" font-size="11" fill="var(--mut)">${dl(i)}</text>`).join("");
+  const dots=pts.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="${ds.length>20?2.4:3.2}" fill="var(--ac)"><title>${dl(i)} ${fmt(ds[i].users)} Nutzer</title></circle>`).join("");
+  $("chart").innerHTML=`<defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--ac)" stop-opacity=".22"/><stop offset="1" stop-color="var(--ac)" stop-opacity=".02"/></linearGradient></defs>${g}<path d="${area}" fill="url(#ga)"/><path d="${line}" fill="none" stroke="var(--ac)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>${dots}${xl}`;
+  const tbl=(id,rows,a,b)=>{
+    const mx=Math.max(1,...rows.map(r=>r.m[0]));
+    $(id).innerHTML=`<tr><th>${a}</th><th>${b}</th></tr>`+rows.map(r=>`<tr><td><span class="nm">${esc(r.d[0])}</span><div class="bar"><i style="width:${(r.m[0]/mx*100).toFixed(1)}%"></i></div></td><td><b>${fmt(r.m[0])}</b></td></tr>`).join("");
+  };
   tbl("pages",d.pages,"Seite","Aufrufe");
   tbl("sources",d.sources,"Quelle","Sitzungen");
 }
+(function(){var b=document.getElementById("tt"),d=document.documentElement,ic=b.querySelector(".tt-ic");function u(){var k=d.dataset.theme==="dark";ic.textContent=k?"☀":"☾";b.setAttribute("aria-pressed",k);var m=document.querySelector("meta[name=theme-color]");if(m)m.content=k?"#0f141f":"#eff1f5"}u();b.onclick=function(){var n=d.dataset.theme==="dark"?"light":"dark";d.dataset.theme=n;try{localStorage.setItem("fa-theme",n)}catch(e){}u()}})();
+(function(){var mt=document.getElementById("mt");if(!mt)return;function s(){var lk=mt.checked&&window.innerWidth<=900;document.body.style.overflow=lk?"hidden":"";document.documentElement.style.overflow=lk?"hidden":"";mt.setAttribute("aria-expanded",mt.checked?"true":"false")}mt.addEventListener("change",s);document.addEventListener("keydown",function(e){if(e.key==="Escape"&&mt.checked){mt.checked=false;s();mt.focus()}});window.addEventListener("resize",function(){if(window.innerWidth>900)mt.checked=false;s()});s()})();
 </script>
 </body>
 </html>
